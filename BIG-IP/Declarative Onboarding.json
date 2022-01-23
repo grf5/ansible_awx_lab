@@ -62,7 +62,7 @@
       "myProvisioning": {
           "class": "Provision",
           "ltm": "nominal",
-          "gtm": "minimum"
+          "asm": "nominal"
       },
       "Servers": {
           "class": "VLAN",
