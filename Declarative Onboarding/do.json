@@ -1,8 +1,7 @@
 {
-    "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/remote.schema.json",
     "class": "DO",
     "declaration": {
-        "schemaVersion": "1.27.0",
+        "schemaVersion": "1.21.0",
         "class": "Device",
         "async": true,
         "label": "F5 Automation Demonstration",
@@ -31,4 +30,4 @@
         },
         "snapshotWorkingConfig": false
     }
-}
+  }

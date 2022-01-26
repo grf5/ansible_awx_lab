@@ -4,54 +4,52 @@
   "action": "deploy",
   "persist": true,
   "declaration": {
-    "class": "ADC",
-    "schemaVersion": "3.0.0",
-    "id": "123abc",
-    "label": "Sample 2",
-    "remark": "HTTPS with predictive-node pool",
-    "Sample_02": {
-      "class": "Tenant",
-      "A1": {
-        "class": "Application",
-        "service": {
-          "class": "Service_HTTPS",
-          "virtualAddresses": [
-            "192.0.2.11"
-          ],
-          "pool": "web_pool",
-          "serverTLS": "webtls"
-        },
-        "web_pool": {
-          "class": "Pool",
-          "loadBalancingMode": "predictive-node",
-          "monitors": [
-            "http"
-          ],
-          "members": [{
-            "servicePort": 80,
-            "serverAddresses": [
-              "192.0.2.12",
-              "192.0.2.13"
-            ]
-          }]
-        },
-        "webtls": {
-          "class": "TLS_Server",
-          "certificates": [{
-            "certificate": "webcert"
-          }]
-        },
-        "webcert": {
-          "class": "Certificate",
-          "remark": "in practice we recommend using a passphrase",
-          "certificate": "-----BEGIN CERTIFICATE-----\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\n-----END CERTIFICATE-----",
-          "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nProc-Type: 4,ENCRYPTED\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\n\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\n-----END RSA PRIVATE KEY-----",
-          "passphrase": {
-            "ciphertext": "ZjVmNQ==",
-            "protected": "eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0"
-          }
+     "class": "ADC",
+     "schemaVersion": "3.0.0",
+     "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+     "label": "www.tropicalnetworks.net",
+     "remark": "Simple HTTP application with RR pool",
+     "target": {
+        "address": "172.31.0.243"
+     },
+     "TropicalNetworks": {
+        "class": "Tenant",
+        "www.tropicalnetworks.net-https": {
+           "class": "Application",
+           "service": {
+              "class": "Service_HTTPS",
+              "virtualAddresses": [
+                 "172.31.1.99"
+              ],
+              "pool": "web_pool",
+              "serverTLS": "certbundle-wildcard-tropicalnetworks.net"
+           },
+           "web_pool": {
+              "class": "Pool",
+              "monitors": [
+                 "http"
+              ],
+              "members": [{
+                 "servicePort": 80,
+                 "serverAddresses": [
+                    "172.31.2.10"
+                 ]
+              }]
+           },
+           "certbundle-wildcard-tropicalnetworks.net": {
+             "class": "TLS_Server",
+             "certificates": [
+               {
+                 "certificate": "wildcard-tropicalnetworks.net"
+               }
+             ]
+           },
+           "wildcard-tropicalnetworks.net": {
+             "class": "Certificate",
+             "certificate": "-----BEGIN CERTIFICATE-----\nMIIGTTCCBTWgAwIBAgIQVDfdbzRhLlW+UCU3F3uWaDANBgkqhkiG9w0BAQsFADCB\njzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G\nA1UEBxMHU2FsZm9yZDEYMBYGA1UEChMPU2VjdGlnbyBMaW1pdGVkMTcwNQYDVQQD\nEy5TZWN0aWdvIFJTQSBEb21haW4gVmFsaWRhdGlvbiBTZWN1cmUgU2VydmVyIENB\nMB4XDTIyMDEyNjAwMDAwMFoXDTIzMDEyNjIzNTk1OVowITEfMB0GA1UEAwwWKi50\ncm9waWNhbG5ldHdvcmtzLm5ldDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC\nggEBAMWXAqLU632dfSC+i/bnZ40/mFTIFG6BHNTt76URnE/Vzuc8sZRt9+v9K9IU\n/8/tSnawsUm7hNHF8bLFDvWCz1YhLdQ0pZL05zrQzHiI4JA5zU9pQ8qFTaYnBspW\nm5OfSRDxhDvFQWyOUgKoqOa756AVqYufhofHpovCfsACk7oXGP/ILfuE5LnMGXKB\npVWVquGND/5KrpOPtnqMyusry6Zv2An2r2qkk6ZoIJyOjKHcnJBWUZnFI13TieoS\nEKBF5DEl51MPRX4PSUNs1dC8JXkM7TyDsOkrbDuF3xYx8Vf70kNW2ZZNgZe0bWlc\nxTsvwjCcJOwU/h41X05BDFL6XQ8CAwEAAaOCAxAwggMMMB8GA1UdIwQYMBaAFI2M\nXsRUrYrhd+mb+ZsF4bgBjWHhMB0GA1UdDgQWBBTNzstiVwabK4BzvMczHRSmtZ76\nGjAOBgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEF\nBQcDAQYIKwYBBQUHAwIwSQYDVR0gBEIwQDA0BgsrBgEEAbIxAQICBzAlMCMGCCsG\nAQUFBwIBFhdodHRwczovL3NlY3RpZ28uY29tL0NQUzAIBgZngQwBAgEwgYQGCCsG\nAQUFBwEBBHgwdjBPBggrBgEFBQcwAoZDaHR0cDovL2NydC5zZWN0aWdvLmNvbS9T\nZWN0aWdvUlNBRG9tYWluVmFsaWRhdGlvblNlY3VyZVNlcnZlckNBLmNydDAjBggr\nBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wNwYDVR0RBDAwLoIWKi50\ncm9waWNhbG5ldHdvcmtzLm5ldIIUdHJvcGljYWxuZXR3b3Jrcy5uZXQwggGABgor\nBgEEAdZ5AgQCBIIBcASCAWwBagB3AK33vvp8/xDIi509nB4+GGq0Zyldz7EMJMqF\nhjTr3IKKAAABfpRBZZYAAAQDAEgwRgIhAPfu4GoqzPSOuaLvni/MLwEZPOHtMSdI\ntuWpRPogVrOTAiEAqqge+euj1l67uxtriTmkXkrIjqC2yxPGK7zn+m+9ZjsAdgB6\nMoxU2LcttiDqOOBSHumEFnAyE4VNO9IrwTpXo1LrUgAAAX6UQWVRAAAEAwBHMEUC\nIC+S3mSffhJdbWxQua9mjW4OeFRvY5ECs7lHG4F/9SjOAiEA2lRkhl8cWlR5lygN\nWLuvOTkIrfRFUALun0QWCDRCOsAAdwDoPtDaPvUGNTLnVyi8iWvJA9PL0RFr7Otp\n4Xd9bQa9bgAAAX6UQWUuAAAEAwBIMEYCIQD+hP8Hgep3aUL/U+XvYweKdjB8S3qt\nx5GF7gOjLC8vUgIhAL/2qxwt9aixKHwZmopE476DjJwm92Vot/+HKBHQIdFYMA0G\nCSqGSIb3DQEBCwUAA4IBAQB4LxnqKOTkuJZanpV6D68rXY+RooP6xRg8mbPpT5qC\nV7b6rmyLuCGmCY42DY1v46MT/0csA/3vihTzVY5u2uSO7p6hkg4U9C1d5vx8jf34\nr6ls90gqhPYwgaoPXdJCjh8TPW09xPQ4yStwPUSohXglGrVthzETyRjhjSKtJk+x\nI+u/Pm9qY4KWj9eiAccZV+nOgxD8GtjKlstzx28wwgzy0Rsy+kyPMRnL8pzM2Quc\nuHU2DXGyQUYhfEH5ojT0udSXqGawudA/9ch6A5sF1OJJHbO1QuV5qAiBiCKZGHCl\n99WwR+2w3JX0SKsRwH1EYoMUbixZkOOG1EgYCcMK8cW4\n-----END CERTIFICATE-----",
+             "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDFlwKi1Ot9nX0g\nvov252eNP5hUyBRugRzU7e+lEZxP1c7nPLGUbffr/SvSFP/P7Up2sLFJu4TRxfGy\nxQ71gs9WIS3UNKWS9Oc60Mx4iOCQOc1PaUPKhU2mJwbKVpuTn0kQ8YQ7xUFsjlIC\nqKjmu+egFamLn4aHx6aLwn7AApO6Fxj/yC37hOS5zBlygaVVlarhjQ/+Sq6Tj7Z6\njMrrK8umb9gJ9q9qpJOmaCCcjoyh3JyQVlGZxSNd04nqEhCgReQxJedTD0V+D0lD\nbNXQvCV5DO08g7DpK2w7hd8WMfFX+9JDVtmWTYGXtG1pXMU7L8IwnCTsFP4eNV9O\nQQxS+l0PAgMBAAECggEAEZhc97sWLV104xGUzSvWINHk8sfOafi9ZIi7qmtjDAjy\nH81b0ufoB+/HkzGjhhSPaPpbD0HPlg6Wc2Dw8BPx+q2Bsz/s7qU4Yhht3N3zgWRk\nUAoDq2krfPxEsof72q14iDW5nMj4Bn619t6mC8X33l2Pd4uBI144CoILX3XbSdrU\nn2yBjcmHAzu20VSV06qG81wVce/phJuSKrcGtV//kKNpwe58KqkiNIqi6V9GL7TX\nFqMHnhM7driHajBcShLiqxN5ZEEfrx8F8lC1ELcmyJvZtlsw3vyWN8+OWvR2GqNC\nJbMSTd2SV+9mneNK4Zdhg48uTv7hRfQXBsnaZt3FwQKBgQDoQvn1fPgnT78J9pBu\n/M7tmcQ0HDIO7aIH2oqlSqNco0ufH/VynFfqDNgd2YDKrxvYakZwvDhaLt8am4X+\nmplOVsXWcxTYFT5FdrOhmVd2YUpRCxpswpBArpsCVz4YHyDARtAJytNMeAT8xBya\nLBRKKwbSCoCrGli2kj8y0pWxxwKBgQDZyNzqqe3pPx5XYMWPHq7C/OeHko1Uhv/O\n/D/Y7qupD/6+YdXOY7yR1sMYKwHYc8K/yPlR/YjbsmBtFQFYoHfp/TLGqob5xNDK\n5B55HFzPY3HLpYcg9nclviUFV9UYmodXE6Jb8slU/euDAzcCqfELzs74Ek5Nigf0\nlV3qUHv6eQJ/EFSlPp2K1TjGNe0gOq2L3yjworlYy7PpsKOtG/Ijil/w8T9OAsD7\nbXl5uJ+Sbq3hR1YxnbueOrkQ9s34ne5A2UFAp9Nvo8Hanwe5maMugyRUFV6yfPMx\nMVsVixSXSRrnMp3IAug/8yB9OUiQukZfJtffouUaJu2zTyL5Tpl/7QKBgQCoT4T0\nUrnMbnxreR2Ve1gC1+Ozsf5J2j9u3yIU7Hd8JCFzTzcm14vPhhOm5O37M5PKFm8g\n/3k6mUPOadJthS7Hhmgsg3PnKkVW2C/414Oev7MdeOLTBceVQrtnwras2hhIoqLy\nvtL8PXU6/kwQYfgpcP4hWDxtzoRRcPJw+RynuQKBgBckyelvIAPEQ01ugcH6VMVp\nF+qflwhesMRAQEGQI+Cn7uQCtF4IqwN+eh9orZMGfi8Zk7ZlsXB2uH5fzpnW2VjL\ncJvgKdVmYAExhlqja0FY7H+TZN3rlnNI60uZwiugTa1gn6ePN/shoCfbWOZJTLRH\nshhdE6d6De2EDgDKeWCb\n-----END PRIVATE KEY-----"
+           }
         }
-      }
-    }
+     }
   }
 }
