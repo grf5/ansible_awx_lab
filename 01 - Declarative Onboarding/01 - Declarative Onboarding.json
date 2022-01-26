@@ -52,7 +52,7 @@
                 "tag": 4093,
                 "mtu": 1500,
                 "interfaces": [{
-                    "name": "1.1",
+                    "name": "1.2",
                     "tagged": false
                 }]
             },
@@ -68,7 +68,7 @@
                 "tag": 4094,
                 "mtu": 1500,
                 "interfaces": [{
-                    "name": "1.2",
+                    "name": "1.1",
                     "tagged": false
                 }]
             },
