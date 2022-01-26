@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/remote.schema.json",
     "class": "DO",
     "declaration": {
-        "schemaVersion": "1.26.0",
+        "schemaVersion": "1.27.0",
         "class": "Device",
         "async": true,
         "label": "F5 Automation Demonstration",
@@ -14,108 +14,21 @@
                 "cliInactivityTimeout": 2400,
                 "consoleInactivityTimeout": 2400,
                 "autoPhonehome": false
-            },
-            "myDns": {
-                "class": "DNS",
-                "nameServers": [
-                    "8.8.8.8",
-                    "8.8.4.4"
-                ],
-                "search": [
-                    "tropicalnetworks.net"
-                ]
-            },
-            "myNtp": {
-                "class": "NTP",
-                "servers": [
-                    "0.pool.ntp.org",
-                    "1.pool.ntp.org",
-                    "2.pool.ntp.org"
-                ],
-                "timezone": "UTC"
-            },
-            "admin": {
-                "class": "User",
-                "userType": "regular",
-                "password": "f5labs123!",
-                "shell": "tmsh"
-            },
-            "guestUser": {
-                "class": "User",
-                "userType": "regular",
-                "password": "guestNewPass1",
-                "partitionAccess": {
-                    "Common": {
-                        "role": "guest"
-                    }
-                }
-            },
-            "anotherUser": {
-                "class": "User",
-                "userType": "regular",
-                "password": "myPass1word",
-                "shell": "none",
-                "partitionAccess": {
-                    "all-partitions": {
-                        "role": "guest"
-                    }
-                }
-            },
-            "myProvisioning": {
-                "class": "Provision",
-                "ltm": "nominal",
-                "asm": "nominal"
-            },
-            "Servers": {
-                "class": "VLAN",
-                "tag": 4093,
-                "mtu": 1500,
-                "interfaces": [
-                    {
-                        "name": "1.2",
-                        "tagged": true
-                    }
-                ],
-                "cmpHash": "dst-ip"
-            },
-            "Servers-self": {
-                "class": "SelfIp",
-                "address": "10.1.20.5/24",
-                "vlan": "internal",
-                "allowService": "default",
-                "trafficGroup": "traffic-group-local-only"
-            },
-            "Clients": {
-                "class": "VLAN",
-                "tag": 4094,
-                "mtu": 1500,
-                "interfaces": [
-                    {
-                        "name": "1.1",
-                        "tagged": true
-                    }
-                ],
-                "cmpHash": "src-ip"
-            },
-            "Clients-self": {
-                "class": "SelfIp",
-                "address": "10.1.10.5/24",
-                "vlan": "external",
-                "allowService": "none",
-                "trafficGroup": "traffic-group-local-only"
-            },
-            "default": {
-                "class": "Route",
-                "gw": "10.1.10.1",
-                "network": "default",
-                "mtu": 1500
-            },
-            "dbvars": {
-                "class": "DbVariables",
-                "ui.advisory.enabled": true,
-                "ui.advisory.color": "green",
-                "ui.advisory.text": "F5 Automation Lab"
             }
         }
+    },
+    "targetHost": "172.31.0.243",
+    "targetUsername": "admin",
+    "targetPassphrase": "f5labs123!",
+    "bigIqSettings": {
+        "failImportOnConflict": false,
+        "conflictPolicy": "USE_BIGIQ",
+        "deviceConflictPolicy": "USE_BIGIP",
+        "versionedConflictPolicy": "KEEP_VERSION",
+        "statsConfig": {
+            "enabled": true,
+            "zone": "default"
+        },
+        "snapshotWorkingConfig": false
     }
 }
