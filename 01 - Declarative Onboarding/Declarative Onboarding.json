@@ -1,0 +1,111 @@
+{
+    "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/remote.schema.json",
+    "class": "DO",
+    "declaration": {
+        "schemaVersion": "1.21.0",
+        "class": "Device",
+        "async": true,
+        "label": "F5 Automation Demonstration",
+        "Common": {
+            "class": "Tenant",
+            "mySystem": {
+                "class": "System",
+                "autoPhonehome": false,
+                "cliInactivityTimeout": 2400,
+                "consoleInactivityTimeout": 2400,
+                "hostname": "bigip.tropicalnetworks.net"
+            },
+            "admin": {
+                "class": "User",
+                "userType": "regular",
+                "password": "f5labs123!",
+                "keys": [
+                    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCBE7scC69wLLuFbje9yJSHz8jnVhxCiCjAYIkHcWks9FplCdhLqOof7sAfyrB/1PamGVTYr1QKju0ueTwHYj9clIXElLENFiRFfaRGErkj8NxnBXfqMoxvzIddNSRdF3FbvYZOC5QvQUyrAJP7dErLmjgqEGNeddnlcDtTHKT2NjmdZm4lAF1AWN5+QLESJh+SgzxH8OdodCn2JXxUzoBrvielqIq2pBvqtVgskTrcPfzGtIAp+VkQLjRikDoZCOCbJRt/ap9XSHdXjJVIoYJwP2SSR58J/eQjRxG5h5shceWh+8sRNRtDd4IzJ5WEdILNVPnrsr8XGjDQ4SjN7kQX grob-us-west-1-25Jan2022"
+                ]
+            },
+            "myDns": {
+                "class": "DNS",
+                "nameServers": [
+                    "8.8.8.8",
+                    "8.8.4.4"
+                ],
+                "search": [
+                    "tropicalnetworks.net"
+                ]
+            },
+            "myNtp": {
+                "class": "NTP",
+                "servers": [
+                    "0.pool.ntp.org",
+                    "1.pool.ntp.org",
+                    "2.pool.ntp.org"
+                ],
+                "timezone": "UTC"
+            },
+            "myProvisioning": {
+                "class": "Provision",
+                "ltm": "nominal",
+                "asm": "nominal"
+            },
+            "Services": {
+                "class": "VLAN",
+                "tag": 4093,
+                "mtu": 1500,
+                "interfaces": [{
+                    "name": "1.1",
+                    "tagged": false
+                }]
+            },
+            "Servers-self": {
+                "class": "SelfIp",
+                "address": "172.31.2.241/24",
+                "vlan": "Services",
+                "allowService": "default",
+                "trafficGroup": "traffic-group-local-only"
+            },
+            "Clients": {
+                "class": "VLAN",
+                "tag": 4094,
+                "mtu": 1500,
+                "interfaces": [{
+                    "name": "1.2",
+                    "tagged": false
+                }]
+            },
+            "Clients-self": {
+                "class": "SelfIp",
+                "address": "172.31.1.99/24",
+                "vlan": "Clients",
+                "allowService": "none",
+                "trafficGroup": "traffic-group-local-only"
+            },
+            "default": {
+                "class": "Route",
+                "gw": "172.31.1.1",
+                "network": "default",
+                "mtu": 1500
+            },
+            "dbvars": {
+                "class": "DbVariables",
+                "ui.advisory.enabled": true,
+                "ui.advisory.color": "green",
+                "ui.advisory.text": "F5 Automation Lab",
+                "provision.extramb": 500
+            }
+        }
+    },
+    "targetHost": "172.31.0.243",
+    "targetUsername": "admin",
+    "targetPassphrase": "f5labs123!",
+    "bigIqSettings": {
+        "failImportOnConflict": false,
+        "conflictPolicy": "USE_BIGIQ",
+        "deviceConflictPolicy": "USE_BIGIP",
+        "versionedConflictPolicy": "KEEP_VERSION",
+        "statsConfig": {
+            "enabled": true,
+            "zone": "default"
+        },
+        "snapshotWorkingConfig": false
+    }
+}

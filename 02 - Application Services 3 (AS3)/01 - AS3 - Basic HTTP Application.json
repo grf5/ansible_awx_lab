@@ -29,7 +29,7 @@
                   "http"
                ],
                "members": [{
-                  "servicePort": 80,
+                  "servicePort": 3000,
                   "serverAddresses": [
                      "172.31.2.10"
                   ]
